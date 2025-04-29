@@ -13,6 +13,8 @@ app.use(
 		cookie: { secure: true },
 	}),
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser((user, done) => {
 	done(null, user);
@@ -40,7 +42,13 @@ passport.use(
 			//User.findOrCreate({ exampleId: profile.id }, (err, user) =>
 			//	cb(err, user),
 			//);
-			cb(null, { accessToken, refreshToken, profile });
+			const user = {
+				id: profile.id,
+				accessToken: accessToken,
+				refreshToken: refreshToken,
+			};
+			return cb(null, user);
+			//return cb(null, { accessToken, refreshToken, profile });
 		},
 	),
 );
