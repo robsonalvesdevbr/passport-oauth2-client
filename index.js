@@ -35,8 +35,8 @@ passport.use(
 			clientSecret: "V4ebDlZGTK7jsW9jOKnxWp2z2vpaqkI8",
 			callbackURL: "http://localhost:8000/auth/example/callback",
 			scope: "openid profile app-payment-scope",
-			state: true,
-			pkce: true,
+			//state: true,
+			//pkce: true,
 		},
 		(accessToken, refreshToken, profile, cb) => {
 			//User.findOrCreate({ exampleId: profile.id }, (err, user) =>
